@@ -1,0 +1,105 @@
+.product_card {
+  display: flex;
+  flex-direction: column;
+  border-radius: $size_4;
+  margin: $size_4;
+  width: 250px;
+
+  background: linear-gradient(225deg, #cacaca, #f0f0f0);
+  box-shadow: -25px 25px 50px #bebebe, 25px -25px 50px #ffffff;
+
+  transition: 0.4s ease-in-out;
+}
+
+.product_card:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+
+  background: linear-gradient(225deg, #f0f0f0, #cacaca);
+  box-shadow: -25px 25px 50px #bebebe, 25px -25px 50px #ffffff;
+}
+
+.product_card * {
+  padding: 0.3rem 0;
+  margin: 0;
+}
+
+.product_card_details_column {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product_card_details {
+  padding: $size_4;
+}
+
+.product_card_image {
+  border-top-left-radius: $size_4;
+  border-top-right-radius: $size_4;
+}
+
+.product_card_name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.product_card_price {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.product_card_delivery {
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.product_card_rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $size_6;
+  font-weight: 700;
+  border-radius: $size_4;
+  padding: 0 $size_2;
+  margin: 0;
+  height: $size_10;
+
+  background: linear-gradient(225deg, #cacaca, #f0f0f0);
+  box-shadow: -5px 5px 10px #bebebe, 5px -5px 10px #ffffff;
+}
+
+.product_card_cart {
+  display: flex;
+  flex-direction: row;
+}
+
+.product_card_cart_icon {
+  border-radius: $size_8;
+  background: #e0e0e0;
+  box-shadow: -5px 5px 10px #bebebe, 5px -5px 10px #ffffff;
+  transition: 0.3s ease-in-out;
+}
+
+.product_card_cart_icon:hover {
+  transform: scale(1.1);
+  background: linear-gradient(225deg, #cacaca, #f0f0f0);
+  box-shadow: -5px 5px 10px #bebebe, 5px -5px 10px #ffffff;
+}
+
+.product_card_cart_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $size_6;
+  font-weight: 700;
+  width: $size_12;
+  margin: 0 $size_1;
+}

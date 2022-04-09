@@ -1,0 +1,25 @@
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $size_10;
+  font-size: $size_6;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: white;
+}
+
+.navBar * {
+  cursor: pointer;
+}
+
+.navBar_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navBar_container * {
+  margin: 0 $size_4;
+}
