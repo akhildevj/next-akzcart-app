@@ -17,6 +17,7 @@ const NavBar = () => {
         else setActive('Login');
       }
     }
+
     if (router.pathname === '/products') setActive('Products');
     if (router.pathname === '/products/new') {
       if (!loading) {
@@ -30,6 +31,8 @@ const NavBar = () => {
         else router.push('/login');
       }
     }
+
+    if (router.pathname === '/cart') setActive('Cart');
   }, [authUser, loading, router, setActive]);
 
   const signOutHandler = () => {
@@ -47,6 +50,13 @@ const NavBar = () => {
         <NavItem
           name="Products"
           route="/products"
+          active={active}
+          setActive={setActive}
+        />
+
+        <NavItem
+          name="Cart"
+          route="/cart"
           active={active}
           setActive={setActive}
         />

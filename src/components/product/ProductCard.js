@@ -1,22 +1,9 @@
-import { useState } from 'react';
 import Image from 'next/image';
-import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 import { TiStarFullOutline } from 'react-icons/ti';
 import { GrDeliver } from 'react-icons/gr';
+import CartBar from '../cart/CartBar';
 
 const ProductCard = ({ product }) => {
-  const [quantity, setQuantity] = useState(0);
-
-  const increaseHandler = () => {
-    if (quantity == 99) return;
-    setQuantity(quantity + 1);
-  };
-
-  const decreaseHandler = () => {
-    if (quantity == 0) return;
-    setQuantity(quantity - 1);
-  };
-
   return (
     <div className="product_card">
       <Image
@@ -42,18 +29,7 @@ const ProductCard = ({ product }) => {
           <p className="product_card_delivery">
             <GrDeliver className="icon_small" /> Free Delivery
           </p>
-
-          <div className="product_card_cart">
-            <AiOutlineMinusCircle
-              className="icon_medium icon_red product_card_cart_icon"
-              onClick={decreaseHandler}
-            />
-            <div className="product_card_cart_text">{quantity}</div>
-            <AiOutlinePlusCircle
-              className="icon_medium icon_green product_card_cart_icon"
-              onClick={increaseHandler}
-            />
-          </div>
+          <CartBar id={product.id} quantity={0} />
         </div>
       </div>
     </div>
