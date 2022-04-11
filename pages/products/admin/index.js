@@ -5,7 +5,7 @@ import ProductContainer from '../../../src/components/product/ProductContainer';
 import Loader from '../../../src/components/UI/Loader';
 
 const AdminProductsPage = () => {
-  const { authUser } = useAuth();
+  const { loading, authUser } = useAuth();
   const [data, setData] = useState([]);
   const uid = authUser ? authUser.uid : '';
 
@@ -18,14 +18,10 @@ const AdminProductsPage = () => {
     if (response.data) setData(response.data);
   }, [response]);
 
-  return (
-    <div>
-      {data.products ? (
-        <ProductContainer products={data.products} />
-      ) : (
-        <Loader />
-      )}
-    </div>
+  return !loading && authUser && data.products ? (
+    <ProductContainer products={data.products} />
+  ) : (
+    <Loader />
   );
 };
 

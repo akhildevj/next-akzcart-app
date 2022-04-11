@@ -1,7 +1,15 @@
 import ProductAddForm from '../../../src/components/product/ProductAddForm';
+import Loader from '../../../src/components/UI/Loader';
+import { useAuth } from '../../../src/context/authContext';
 
 const NewProductPage = ({ categories }) => {
-  return <ProductAddForm categories={categories} />;
+  const { loading, authUser } = useAuth();
+
+  return !loading && authUser ? (
+    <ProductAddForm categories={categories} />
+  ) : (
+    <Loader />
+  );
 };
 
 export const getStaticProps = async () => {

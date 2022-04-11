@@ -9,10 +9,7 @@ const NavBar = () => {
   const router = useRouter();
   const [active, setActive] = useState('Home');
 
-  const delay = ms => new Promise(res => setTimeout(res, ms));
-
   useEffect(() => {
-    console.log(loading, authUser);
     if (router.pathname === '/') setActive('Home');
     if (router.pathname === '/login') {
       if (!loading) {
@@ -24,13 +21,13 @@ const NavBar = () => {
     if (router.pathname === '/products/new') {
       if (!loading) {
         if (authUser) setActive('New Product');
-        else router.push('/');
+        else router.push('/login');
       }
     }
     if (router.pathname === '/products/admin') {
       if (!loading) {
         if (authUser) setActive('Admin Products');
-        else router.push('/');
+        else router.push('/login');
       }
     }
   }, [authUser, loading, router, setActive]);
