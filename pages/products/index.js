@@ -5,8 +5,9 @@ import ProductContainer from '../../src/components/product/ProductContainer';
 const Products = props => {
   const [data, setData] = useState(props.data);
 
-  const response = useSWR(`${process.env.NEXT_PUBLIC_URL}/products`, url =>
-    fetch(url).then(res => res.json())
+  const response = useSWR(
+    `${process.env.NEXT_PUBLIC_URL}/products?limit=10`,
+    url => fetch(url).then(res => res.json())
   );
 
   useEffect(() => {
@@ -21,7 +22,9 @@ const Products = props => {
 };
 
 export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/products`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/products?limit=10`
+  );
   const data = await response.json();
   return { props: { data }, revalidate: 60 };
 };

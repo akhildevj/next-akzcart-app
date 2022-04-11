@@ -4,6 +4,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  font-family: 'Quicksand', sans-serif;
 }
 
 a {
@@ -13,6 +14,11 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+input,
+select,
+textarea {
   font-family: 'Quicksand', sans-serif;
 }
 

@@ -4,20 +4,36 @@ import { useAuth } from '../../context/authContext';
 import NavItem from './NavItem';
 
 const NavBar = () => {
-  const { authUser, signOut } = useAuth();
+  const { authUser, loading, signOut } = useAuth();
 
   const router = useRouter();
   const [active, setActive] = useState('Home');
 
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+
   useEffect(() => {
+    console.log(loading, authUser);
     if (router.pathname === '/') setActive('Home');
-    if (router.pathname === '/login') setActive('Login');
+    if (router.pathname === '/login') {
+      if (!loading) {
+        if (authUser) router.push('/');
+        else setActive('Login');
+      }
+    }
     if (router.pathname === '/products') setActive('Products');
     if (router.pathname === '/products/new') {
-      if (authUser) setActive('New Product');
-      else router.push('/');
+      if (!loading) {
+        if (authUser) setActive('New Product');
+        else router.push('/');
+      }
     }
-  }, [authUser, router, setActive]);
+    if (router.pathname === '/products/admin') {
+      if (!loading) {
+        if (authUser) setActive('Admin Products');
+        else router.push('/');
+      }
+    }
+  }, [authUser, loading, router, setActive]);
 
   const signOutHandler = () => {
     signOut();
@@ -38,11 +54,18 @@ const NavBar = () => {
           setActive={setActive}
         />
 
-        {authUser ? (
+        {!loading && authUser ? (
           <>
             <NavItem
               name="New Product"
               route="/products/new"
+              active={active}
+              setActive={setActive}
+            />
+
+            <NavItem
+              name="Admin Products"
+              route="/products/admin"
               active={active}
               setActive={setActive}
             />
