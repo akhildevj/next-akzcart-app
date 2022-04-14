@@ -1,8 +1,13 @@
-.product_container {
+.home_container {
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 $margin_app;
+  margin: 0;
+  width: 100vw;
+}
+
+.home_container_image {
+  width: 100vw;
 }

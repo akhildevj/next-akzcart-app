@@ -1,4 +1,4 @@
-.navBar {
+.nav_bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,18 +8,26 @@
   top: 0;
   z-index: 1;
   background: white;
-  width: 100vw;
+  padding: 1rem 4rem;
 }
 
-.navBar * {
+.nav_bar * {
   cursor: pointer;
 }
 
-.navBar_container {
+.nav_bar_logo {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  width: 30%;
 }
 
-.navBar_container * {
+.nav_bar_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 60%;
+}
+
+.nav_bar_container * {
   margin: 0 $size_4;
 }

@@ -48,12 +48,16 @@ const NavBar = () => {
   };
 
   return (
-    <div className="navBar">
-      <p className="navBar_logo">AkzKart</p>
-      <div className="navBar_container">
-        <span>{active}</span>
-        <NavItem name="Home" route="/" active={active} setActive={setActive} />
-
+    <div className="nav_bar">
+      <div className="nav_bar_logo">
+        <NavItem
+          name="AkzKart"
+          route="/"
+          active={active}
+          setActive={setActive}
+        />
+      </div>
+      <div className="nav_bar_container">
         <NavItem
           name="Products"
           route="/products"
