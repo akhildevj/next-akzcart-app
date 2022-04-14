@@ -1,5 +1,4 @@
 import { FcCalendar } from 'react-icons/fc';
-import OrderItemCart from './OrderItemCart';
 
 const OrderItem = ({ order }) => {
   const options = {
@@ -12,10 +11,7 @@ const OrderItem = ({ order }) => {
     minute: 'numeric',
   };
   const date = new Date(order.orderedAt).toLocaleString('en-US', options);
-
-  const products = order.cart.map(({ id, name, quantity }) => {
-    return { id, name, quantity };
-  });
+  const products = order.cart.map(({ name, quantity }) => ({ name, quantity }));
 
   return (
     <div className="order_item">
@@ -26,8 +22,8 @@ const OrderItem = ({ order }) => {
         </p>
         <p className="order_item_price">Total Amount: ₹{order.totalPrice}</p>
         <div className="order_item_products">
-          {products.map(({ id, name, quantity }) => (
-            <p key={`${order.id}_${id}`} className="order_item_products_card">
+          {products.map(({ name, quantity }, index) => (
+            <p key={index} className="order_item_products_card">
               {name} x {quantity}
             </p>
           ))}

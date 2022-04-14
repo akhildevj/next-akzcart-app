@@ -10,14 +10,17 @@ const CartBar = props => {
   const increaseHandler = () => {
     if (quantity == 99) return;
     setQuantity(quantity + 1);
+    changeQuantity(quantity + 1);
   };
 
   const decreaseHandler = () => {
     if (quantity == 0) return;
     setQuantity(quantity - 1);
+    changeQuantity(quantity - 1);
   };
 
-  const changeQuantity = async () => {
+  const changeQuantity = async quantity => {
+    console.log('quantity: ', quantity);
     if (props.changeTotalPrice) props.changeTotalPrice(quantity);
     if (!loading && authUser) {
       const options = {
@@ -25,18 +28,16 @@ const CartBar = props => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ productId: Number(props.id), quantity }),
       };
+      console.log(options);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_URL}/cart/${authUser.uid}`,
         options
       );
 
       const data = await response.json();
+      console.log(data);
     }
   };
-
-  useEffect(() => {
-    changeQuantity();
-  }, [quantity]);
 
   return (
     <div className="cart_bar">
