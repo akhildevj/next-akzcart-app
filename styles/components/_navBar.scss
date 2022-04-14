@@ -2,13 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 $size_10;
   font-size: $size_6;
   font-weight: 600;
   position: sticky;
   top: 0;
   z-index: 1;
   background: white;
+  width: 100vw;
 }
 
 .navBar * {

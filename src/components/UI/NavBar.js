@@ -33,6 +33,13 @@ const NavBar = () => {
     }
 
     if (router.pathname === '/cart') setActive('Cart');
+
+    if (router.pathname === '/orders') {
+      if (!loading) {
+        if (authUser) setActive('Orders');
+        else router.push('/login');
+      }
+    }
   }, [authUser, loading, router, setActive]);
 
   const signOutHandler = () => {
@@ -73,6 +80,13 @@ const NavBar = () => {
             <NavItem
               name="Admin Products"
               route="/products/admin"
+              active={active}
+              setActive={setActive}
+            />
+
+            <NavItem
+              name="Orders"
+              route="/orders"
               active={active}
               setActive={setActive}
             />
