@@ -1,36 +1,37 @@
 import Image from 'next/image';
 import { TiStarFullOutline } from 'react-icons/ti';
 import { GrDeliver } from 'react-icons/gr';
-import CartBar from '../cart/CartBar';
+import ProductCardButton from './ProductCardButton';
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="product_card">
-      <Image
-        className="product_card_image"
-        alt={product.name}
-        src={product.imageUrl}
-        width={250}
-        height={250}
-        quality={75}
-      />
-      <div className="product_card_details">
-        <p className="product_card_name">{product.name}</p>
+    <div className='product-card'>
+      <div className='product-card-head'>
+        <picture>
+          <Image
+            className='product-card--image'
+            alt={product.name}
+            src={product.imageUrl}
+            width={225}
+            height={225}
+            quality={75}
+          />
+        </picture>
 
-        <div className="product_card_details_column">
-          <p className="product_card_price">₹{product.price}</p>
+        <p className='product-card--rating'>
+          {product.rating} <TiStarFullOutline className='icon' />
+        </p>
 
-          <p className="product_card_rating">
-            {product.rating} <TiStarFullOutline className="icon_small" />
-          </p>
-        </div>
+        <p className='product-card--delivery'>
+          <GrDeliver className='icon' />
+          Free Delivery
+        </p>
+      </div>
 
-        <div className="product_card_details_column">
-          <p className="product_card_delivery">
-            <GrDeliver className="icon_small" /> Free Delivery
-          </p>
-          <CartBar product={product} quantity={0} />
-        </div>
+      <div className='product-card--details'>
+        <p className='product-card--name'>{product.name}</p>
+        <p className='product-card--price'>₹{product.price}</p>
+        <ProductCardButton id={product.id} />
       </div>
     </div>
   );

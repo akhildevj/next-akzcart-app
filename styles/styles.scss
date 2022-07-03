@@ -1,7 +1,5 @@
 @import './base/base';
 @import './base/settings';
-@import './components/productContainer';
-@import './components/productCard';
 @import './components/productAddForm';
 @import './components/navBar';
 @import './components/loader';
@@ -13,4 +11,7 @@
 @import './components/orderItem';
 @import './components/orderItemCart';
 @import './components/singleOrderItem';
-@import './components/homeContainer';
+@import './components/home/home';
+@import './components/product/product';
+@import './components/product/productCard';
+@import './components/product/productCardButton';

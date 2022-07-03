@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
-import ProductContainer from '../../src/components/product/ProductContainer';
+import Product from '../../src/components/product/Product';
 
 const Products = props => {
   const [data, setData] = useState(props.data);
@@ -14,7 +14,7 @@ const Products = props => {
     if (response.data) setData(response.data);
   }, [response]);
 
-  return <ProductContainer products={data.products} />;
+  return <Product products={data.products} />;
 };
 
 export const getStaticProps = async () => {

@@ -1,9 +1,14 @@
 import Link from 'next/link';
 
-const NavItem = ({ setActive, name, route }) => {
+const NavItem = ({ active, setActive, name, route }) => {
   return (
     <Link href={route} passHref={true}>
-      <span onClick={() => setActive(name)}>{name}</span>
+      <span
+        className={active === name ? 'nav-item nav-item--active' : 'nav-item'}
+        onClick={() => setActive(name)}
+      >
+        {name}
+      </span>
     </Link>
   );
 };

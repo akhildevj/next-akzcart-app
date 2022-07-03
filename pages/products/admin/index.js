@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { useAuth } from '../../../src/context/authContext';
-import ProductContainer from '../../../src/components/product/ProductContainer';
 import Loader from '../../../src/components/UI/Loader';
+import Product from '../../../src/components/product/Product';
 
 const AdminProductsPage = () => {
   const { loading, authUser } = useAuth();
@@ -19,7 +19,7 @@ const AdminProductsPage = () => {
   }, [response]);
 
   return !loading && authUser && data.products ? (
-    <ProductContainer products={data.products} />
+    <Product products={data.products} />
   ) : (
     <Loader />
   );

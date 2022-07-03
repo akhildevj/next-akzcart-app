@@ -1,22 +1,22 @@
-import ProductContainer from '../product/ProductContainer';
 import Image from 'next/image';
+import Product from '../product/Product';
 
 const Home = ({ products }) => {
   return (
-    <div className="home_container">
-      <div className="home_container_image">
+    <div className='home'>
+      <picture className='home-image'>
         <Image
-          src="/bg.jpeg"
+          src='/bg.jpeg'
           quality={100}
-          alt="background"
-          width="100%"
-          height="25%"
-          layout="responsive"
-          objectFit="contain"
+          alt='background'
+          width='100%'
+          height='25%'
+          layout='responsive'
+          objectFit='contain'
         />
-      </div>
+      </picture>
 
-      <ProductContainer products={products} />
+      <Product products={products} />
     </div>
   );
 };

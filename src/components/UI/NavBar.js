@@ -7,10 +7,10 @@ const NavBar = () => {
   const { authUser, loading, signOut } = useAuth();
 
   const router = useRouter();
-  const [active, setActive] = useState('Home');
+  const [active, setActive] = useState('AkzKart');
 
   useEffect(() => {
-    if (router.pathname === '/') setActive('Home');
+    if (router.pathname === '/') setActive('AkzKart');
     if (router.pathname === '/login') {
       if (!loading) {
         if (authUser) router.push('/');
@@ -48,26 +48,26 @@ const NavBar = () => {
   };
 
   return (
-    <div className="nav_bar">
-      <div className="nav_bar_logo">
+    <div className='nav-bar'>
+      <div className='nav-bar--logo'>
         <NavItem
-          name="AkzKart"
-          route="/"
+          name='AkzKart'
+          route='/'
           active={active}
           setActive={setActive}
         />
       </div>
-      <div className="nav_bar_container">
+      <div className='nav-bar--container'>
         <NavItem
-          name="Products"
-          route="/products"
+          name='Products'
+          route='/products'
           active={active}
           setActive={setActive}
         />
 
         <NavItem
-          name="Cart"
-          route="/cart"
+          name='Cart'
+          route='/cart'
           active={active}
           setActive={setActive}
         />
@@ -75,32 +75,34 @@ const NavBar = () => {
         {!loading && authUser ? (
           <>
             <NavItem
-              name="New Product"
-              route="/products/new"
+              name='New Product'
+              route='/products/new'
               active={active}
               setActive={setActive}
             />
 
             <NavItem
-              name="Admin Products"
-              route="/products/admin"
+              name='Admin Products'
+              route='/products/admin'
               active={active}
               setActive={setActive}
             />
 
             <NavItem
-              name="Orders"
-              route="/orders"
+              name='Orders'
+              route='/orders'
               active={active}
               setActive={setActive}
             />
 
-            <button onClick={signOutHandler}>Logout</button>
+            <button className='nav-button' onClick={signOutHandler}>
+              Logout
+            </button>
           </>
         ) : (
           <NavItem
-            name="Login"
-            route="/login"
+            name='Login'
+            route='/login'
             active={active}
             setActive={setActive}
           />

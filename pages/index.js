@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import Home from '../src/components/home/home';
 
-const url = `${process.env.NEXT_PUBLIC_URL}/products?limit=4`;
+const url = `${process.env.NEXT_PUBLIC_URL}/products?limit=5`;
 
 const HomePage = props => {
   const [data, setData] = useState(props.data);

@@ -1,8 +1,8 @@
 import ProductCard from './ProductCard';
 
-const ProductContainer = ({ products }) => {
+const Product = ({ products }) => {
   return (
-    <div className="product_container">
+    <div className='product'>
       {products.map(product => {
         return <ProductCard key={product.id} product={product} />;
       })}
@@ -10,4 +10,4 @@ const ProductContainer = ({ products }) => {
   );
 };
 
-export default ProductContainer;
+export default Product;

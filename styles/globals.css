@@ -1,10 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700;800;900&display=swap');
 
-html,
-body {
+* {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* 10px[required] / 16px[default] = 0.625 = 62.5% */
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
   font-family: 'Quicksand', sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  overflow-x: hidden;
 }
 
 a {
@@ -12,18 +26,13 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 input,
 select,
 textarea {
-  font-family: 'Quicksand', sans-serif;
+  font-family: inherit;
 }
 
-input:focus,
-select:focus,
-button:focus {
+*:focus {
   outline: none;
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
 }
