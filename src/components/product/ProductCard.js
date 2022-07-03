@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
           <p className="product_card_delivery">
             <GrDeliver className="icon_small" /> Free Delivery
           </p>
-          <CartBar id={product.id} quantity={0} />
+          <CartBar product={product} quantity={0} />
         </div>
       </div>
     </div>

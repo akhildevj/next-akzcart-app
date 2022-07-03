@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
 import { useAuth } from '../../context/authContext';
 
@@ -20,39 +20,58 @@ const CartBar = props => {
   };
 
   const changeQuantity = async quantity => {
-    console.log('quantity: ', quantity);
     if (props.changeTotalPrice) props.changeTotalPrice(quantity);
+
     if (!loading && authUser) {
+      const productId = props.cart ? props.product.productId : props.product.id;
       const options = {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId: Number(props.id), quantity }),
+        body: JSON.stringify({ productId, quantity }),
       };
-      console.log(options);
-      const response = await fetch(
+
+      await fetch(
         `${process.env.NEXT_PUBLIC_URL}/cart/${authUser.uid}`,
         options
       );
+    } else {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
-      const data = await response.json();
-      console.log(data);
+      const productExists = cart.findIndex(
+        ({ id }) => id === Number(props.product.id)
+      );
+
+      if (productExists >= 0) {
+        cart[productExists].quantity = quantity;
+      } else {
+        cart.push({
+          id: Number(props.product.id),
+          imageUrl: props.product.imageUrl,
+          name: props.product.name,
+          price: props.product.price,
+          productId: Number(props.product.id),
+          quantity,
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
     }
   };
 
   return (
-    <div className="cart_bar">
-      <div className="cart_bar_icon_div">
+    <div className='cart_bar'>
+      <div className='cart_bar_icon_div'>
         <AiOutlineMinusCircle
-          className="icon_medium icon_red cart_bar_icon"
+          className='icon_medium icon_red cart_bar_icon'
           onClick={decreaseHandler}
         />
       </div>
 
-      <div className="cart_bar_text">{quantity}</div>
+      <div className='cart_bar_text'>{quantity}</div>
 
-      <div className="cart_bar_icon_div">
+      <div className='cart_bar_icon_div'>
         <AiOutlinePlusCircle
-          className="icon_medium icon_green cart_bar_icon"
+          className='icon_medium icon_green cart_bar_icon'
           onClick={increaseHandler}
         />
       </div>

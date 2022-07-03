@@ -3,23 +3,18 @@ import useSWR from 'swr';
 import { useAuth } from '../../context/authContext';
 import Loader from '../UI/Loader';
 import CartItem from './CartItem';
-import { FaCashRegister } from 'react-icons/fa';
-import { IoTrashBin } from 'react-icons/io5';
 import { errorNotification, successNotification } from '../../shared/constants';
 import { Store } from 'react-notifications-component';
+import CartButtonContainer from './cartButtonContainer';
 
 const CartContainer = () => {
   const { loading, authUser } = useAuth();
-  const [data, setData] = useState();
+  const [cart, setCart] = useState();
   const uid = authUser ? authUser.uid : '';
 
-  const response = useSWR(`${process.env.NEXT_PUBLIC_URL}/cart/${uid}`, url =>
+  const { data } = useSWR(`${process.env.NEXT_PUBLIC_URL}/cart/${uid}`, url =>
     fetch(url).then(res => res.json())
   );
-
-  useEffect(() => {
-    if (response.data) setData(response.data);
-  }, [response]);
 
   const checkout = async () => {
     try {
@@ -29,6 +24,8 @@ const CartContainer = () => {
       const notification = successNotification;
       notification.message = 'Succesfully Placed Order.';
       Store.addNotification(notification);
+      setCart([]);
+      localStorage.setItem('cart', []);
     } catch (err) {
       const notification = errorNotification;
       notification.message = 'Unable To Place The Order.';
@@ -44,6 +41,8 @@ const CartContainer = () => {
       const notification = successNotification;
       notification.message = 'Succesfully Cleared Cart.';
       Store.addNotification(notification);
+      setCart([]);
+      localStorage.setItem('cart', []);
     } catch (err) {
       const notification = errorNotification;
       notification.message = 'Unable To Clear The Cart.';
@@ -51,20 +50,47 @@ const CartContainer = () => {
     }
   };
 
-  return !loading && authUser && data && data.cart ? (
-    <div className="cart_container">
-      {data.cart.map(cartItem => (
-        <CartItem key={cartItem.id} cart={cartItem} />
-      ))}
-      <div className="cart_container_row">
-        <button className="cart_container_button green" onClick={checkout}>
-          <FaCashRegister className="button_small" /> Buy Now
-        </button>
-        <button className="cart_container_button red" onClick={clearCart}>
-          <IoTrashBin className="button_small" />
-          Clear Cart
-        </button>
-      </div>
+  const changeCart = async (productId, quantity) => {
+    if (!loading && authUser) {
+      const options = {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId, quantity }),
+      };
+      await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/cart/${authUser.uid}`,
+        options
+      );
+
+      localStorage.setItem('cart', []);
+    }
+  };
+
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (data && data.cart && data.cart.length) {
+      if (cart.length) {
+        cart.map(({ id: productId, quantity }) => {
+          changeCart(productId, quantity);
+        });
+      }
+      setCart(data.cart);
+    } else setCart(cart);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
+  return cart ? (
+    <div className='cart_container'>
+      {cart.length ? (
+        <div>
+          {cart.map(cartItem => (
+            <CartItem key={cartItem.id} cart={cartItem} />
+          ))}
+          <CartButtonContainer checkout={checkout} clearCart={clearCart} />
+        </div>
+      ) : (
+        <h1>Cart Empty</h1>
+      )}
     </div>
   ) : (
     <Loader />
