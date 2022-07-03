@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { useAuth } from '../../src/context/authContext';
 import Loader from '../../src/components/UI/Loader';
-import OrderContainer from '../../src/components/order/OrderContainer';
+import Order from '../../src/components/order/Order';
 
 const OrdersPage = () => {
   const { loading, authUser } = useAuth();
@@ -18,7 +18,7 @@ const OrdersPage = () => {
     if (data && data.orders) setOrders(data.orders);
   }, [data]);
 
-  return !loading && orders ? <OrderContainer orders={orders} /> : <Loader />;
+  return !loading && orders ? <Order orders={orders} /> : <Loader />;
 };
 
 export default OrdersPage;

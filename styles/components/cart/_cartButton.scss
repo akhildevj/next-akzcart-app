@@ -1,0 +1,30 @@
+.cart-button--container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+}
+
+.cart-button {
+  display: flex;
+  align-items: center;
+
+  padding: 1.2rem 2.4rem;
+}
+
+.cart-button--checkout {
+  background-color: #84fb95;
+  background-image: linear-gradient(315deg, #84fb95 0%, #cef576 74%);
+}
+
+.cart-button--clear {
+  background-color: #f9484a;
+  background-image: linear-gradient(315deg, #f9484a 0%, #fbd72b 74%);
+}
+
+.cart-button--checkout:hover svg {
+  transform: translateX(2.3em) scale(1.6);
+}
+
+.cart-button--clear:hover svg {
+  transform: translateX(2.7em) scale(1.6);
+}

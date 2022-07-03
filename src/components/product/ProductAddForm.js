@@ -55,17 +55,17 @@ const ProductAddForm = ({ categories }) => {
   };
 
   return (
-    <div className="product_add_form_container">
-      <form onSubmit={submitHandler} className="product_add_form">
-        <p className="product_add_form_heading">Add Product</p>
+    <div className='product-add-form--container'>
+      <form onSubmit={submitHandler} className='product-add-form'>
+        <p className='product-add-form--heading'>Add Product</p>
 
         {/* Product Name Input */}
         <label>Product Name</label>
         <input
-          type="text"
+          type='text'
           ref={nameRef}
-          name="productName"
-          autoComplete="On"
+          name='productName'
+          autoComplete='On'
           autoFocus
           required
         />
@@ -73,10 +73,10 @@ const ProductAddForm = ({ categories }) => {
         {/* Product Price Input */}
         <label>Product Price</label>
         <input
-          type="number"
+          type='number'
           ref={priceRef}
-          name="productPrice"
-          autoComplete="On"
+          name='productPrice'
+          autoComplete='On'
           required
         />
 
@@ -84,14 +84,14 @@ const ProductAddForm = ({ categories }) => {
         <label>Product Description</label>
         <textarea
           ref={descriptionRef}
-          name="productDescription"
-          autoComplete="On"
+          name='productDescription'
+          autoComplete='On'
           required
         />
 
         {/* Product Category Input */}
         <label>Product Category</label>
-        <select ref={categoryRef} name="productCategory" autoComplete="On">
+        <select ref={categoryRef} name='productCategory' autoComplete='On'>
           {categories.map(({ id, name }) => (
             <option key={id} value={id}>
               {name}
@@ -102,16 +102,21 @@ const ProductAddForm = ({ categories }) => {
         {/* Product Image URL Input */}
         <label>Product Image URL</label>
         <input
-          type="url"
+          type='url'
           ref={imageUrlRef}
-          name="productUrl"
-          autoComplete="On"
+          name='productUrl'
+          autoComplete='On'
           required
         />
 
         {/* Product Add Button */}
-        <button className="product_add_form_button">
-          <AiOutlinePlusCircle className="icon_medium icon_green" /> Product
+        <button className='btn product-add-form--button'>
+          <div className='svg-wrapper-1'>
+            <div className='svg-wrapper'>
+              <AiOutlinePlusCircle />
+            </div>
+          </div>
+          <span>Product</span>
         </button>
       </form>
     </div>

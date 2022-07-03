@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import Product from '../../src/components/product/Product';
 
+const url = `${process.env.NEXT_PUBLIC_URL}/products?limit=10`;
+
 const Products = props => {
   const [data, setData] = useState(props.data);
 
-  const response = useSWR(
-    `${process.env.NEXT_PUBLIC_URL}/products?limit=8`,
-    url => fetch(url).then(res => res.json())
-  );
+  const response = useSWR(url, url => fetch(url).then(res => res.json()));
 
   useEffect(() => {
     if (response.data) setData(response.data);
@@ -18,9 +17,7 @@ const Products = props => {
 };
 
 export const getStaticProps = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/products?limit=8`
-  );
+  const response = await fetch(url);
   const data = await response.json();
   return { props: { data }, revalidate: 60 };
 };

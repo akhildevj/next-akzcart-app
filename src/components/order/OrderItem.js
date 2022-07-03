@@ -14,20 +14,18 @@ const OrderItem = ({ order }) => {
   const products = order.cart.map(({ name, quantity }) => ({ name, quantity }));
 
   return (
-    <div className="order_item">
-      <div className="order_item_row">
-        <p className="order_item_date">
-          <FcCalendar />
-          Ordered At: {date}
-        </p>
-        <p className="order_item_price">Total Amount: ₹{order.totalPrice}</p>
-        <div className="order_item_products">
-          {products.map(({ name, quantity }, index) => (
-            <p key={index} className="order_item_products_card">
-              {name} x {quantity}
-            </p>
-          ))}
-        </div>
+    <div className='order-item'>
+      <p className='order-item--date'>
+        <FcCalendar />
+        Ordered At: {date}
+      </p>
+      <p className='order-item--price'>Total Amount: ₹{order.totalPrice}</p>
+      <div className='order-item--products'>
+        {products.map(({ name, quantity }, index) => (
+          <p key={index} className='order-item--products-card'>
+            {name} x {quantity}
+          </p>
+        ))}
       </div>
     </div>
   );

@@ -2,9 +2,9 @@ import Loader from '../UI/Loader';
 import OrderItem from './OrderItem';
 import OrderLink from './OrderLink';
 
-const OrderContainer = ({ orders }) => {
+const Order = ({ orders }) => {
   return orders ? (
-    <div className="order_container">
+    <div className='order'>
       {orders.map(order => (
         <OrderLink key={order.id} link={`/orders/${order.id}`}>
           <OrderItem key={order.id} order={order} />
@@ -16,4 +16,4 @@ const OrderContainer = ({ orders }) => {
   );
 };
 
-export default OrderContainer;
+export default Order;

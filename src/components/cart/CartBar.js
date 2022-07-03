@@ -59,22 +59,10 @@ const CartBar = props => {
   };
 
   return (
-    <div className='cart_bar'>
-      <div className='cart_bar_icon_div'>
-        <AiOutlineMinusCircle
-          className='icon_medium icon_red cart_bar_icon'
-          onClick={decreaseHandler}
-        />
-      </div>
-
-      <div className='cart_bar_text'>{quantity}</div>
-
-      <div className='cart_bar_icon_div'>
-        <AiOutlinePlusCircle
-          className='icon_medium icon_green cart_bar_icon'
-          onClick={increaseHandler}
-        />
-      </div>
+    <div className='cart-bar'>
+      <AiOutlineMinusCircle className='icon' onClick={decreaseHandler} />
+      <div className='cart-bar-text'>{quantity}</div>
+      <AiOutlinePlusCircle className='icon' onClick={increaseHandler} />
     </div>
   );
 };

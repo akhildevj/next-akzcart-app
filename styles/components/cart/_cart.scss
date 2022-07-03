@@ -1,0 +1,11 @@
+.cart {
+  display: flex;
+  justify-content: center;
+  margin: 4.8rem 9.6rem;
+}
+
+.cart--container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}

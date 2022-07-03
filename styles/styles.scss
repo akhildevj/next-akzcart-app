@@ -1,17 +1,24 @@
 @import './base/base';
 @import './base/settings';
-@import './components/productAddForm';
 @import './components/navBar';
 @import './components/loader';
 @import './components/login';
-@import './components/cart/cartContainer';
+@import './components/home/home';
+
+// CART
+@import './components/cart/cart';
 @import './components/cart/cartItem';
 @import './components/cart/cartBar';
-@import './components/orderContainer';
-@import './components/orderItem';
-@import './components/orderItemCart';
-@import './components/singleOrderItem';
-@import './components/home/home';
+@import './components/cart/cartButton';
+
+// ORDER
+@import './components/order/order';
+@import './components/order/orderItem';
+@import './components/order/orderItemCart';
+@import './components/order/singleOrderItem';
+
+// PRODUCT
 @import './components/product/product';
 @import './components/product/productCard';
 @import './components/product/productCardButton';
+@import './components/product/productAddForm';

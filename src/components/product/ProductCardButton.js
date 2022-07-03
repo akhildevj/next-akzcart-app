@@ -26,7 +26,9 @@ const ProductCardButton = ({ id }) => {
       <button
         onClick={addToCart}
         className={
-          clicked ? 'product-card--button clicked' : 'product-card--button'
+          clicked
+            ? 'btn product-card--button clicked'
+            : 'btn product-card--button'
         }
       >
         <div className='svg-wrapper-1'>

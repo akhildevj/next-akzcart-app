@@ -5,9 +5,9 @@ import Loader from '../UI/Loader';
 import CartItem from './CartItem';
 import { errorNotification, successNotification } from '../../shared/constants';
 import { Store } from 'react-notifications-component';
-import CartButtonContainer from './cartButtonContainer';
+import CartButton from './cartButton';
 
-const CartContainer = () => {
+const Cart = () => {
   const { loading, authUser } = useAuth();
   const [cart, setCart] = useState();
   const uid = authUser ? authUser.uid : '';
@@ -80,13 +80,13 @@ const CartContainer = () => {
   }, [data]);
 
   return cart ? (
-    <div className='cart_container'>
+    <div className='cart'>
       {cart.length ? (
-        <div>
+        <div className='cart--container'>
           {cart.map(cartItem => (
             <CartItem key={cartItem.id} cart={cartItem} />
           ))}
-          <CartButtonContainer checkout={checkout} clearCart={clearCart} />
+          <CartButton checkout={checkout} clearCart={clearCart} />
         </div>
       ) : (
         <h1>Cart Empty</h1>
@@ -97,4 +97,4 @@ const CartContainer = () => {
   );
 };
 
-export default CartContainer;
+export default Cart;
