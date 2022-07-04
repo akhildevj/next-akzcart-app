@@ -83,13 +83,14 @@ const Cart = () => {
     <div className='cart'>
       {cart.length ? (
         <div className='cart--container'>
+          <h1 className='cart--container--heading'>Your Cart</h1>
           {cart.map(cartItem => (
             <CartItem key={cartItem.id} cart={cartItem} />
           ))}
           <CartButton checkout={checkout} clearCart={clearCart} />
         </div>
       ) : (
-        <h1>Cart Empty</h1>
+        <h1 className='cart--container--heading'>Cart Empty</h1>
       )}
     </div>
   ) : (

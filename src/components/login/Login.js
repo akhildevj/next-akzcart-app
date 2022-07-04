@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import { Store } from 'react-notifications-component';
 import { useAuth } from '../../context/authContext';
 import { errorNotification, successNotification } from '../../shared/constants';
+import { FiLogIn } from 'react-icons/fi';
 
 const Login = () => {
   const router = useRouter();
@@ -64,36 +65,43 @@ const Login = () => {
   };
 
   return (
-    <div className="login_form_container">
-      <form onSubmit={submitHandler} className="login_form">
-        <p className="login_form_heading">{isLogin ? 'Login' : 'Signup'}</p>
+    <div className='login'>
+      <form onSubmit={submitHandler} className='login--form'>
+        <p className='login--form-heading'>{isLogin ? 'Login' : 'Signup'}</p>
 
         {!isLogin && (
           <>
             <label>Name</label>
-            <input type="text" ref={nameRef} />
+            <input type='text' ref={nameRef} />
           </>
         )}
 
         <label>Email</label>
+
         <input
-          type="text"
+          type='text'
           ref={emailRef}
-          name="email"
-          autoComplete="On"
+          name='Email'
+          autoComplete='On'
           autoFocus
           required
         />
 
         <label>Password</label>
-        <input type="text" ref={passwordRef} name="password" required />
+        <input type='text' ref={passwordRef} name='password' required />
 
-        <button className="login_form_button">
-          {isLogin ? 'Login' : 'Signup'}
+        <button className='btn login--button'>
+          <div className='svg-wrapper-1'>
+            <div className='svg-wrapper'>
+              <FiLogIn />
+            </div>
+          </div>
+          <span>{isLogin ? 'Login' : 'Signup'}</span>
         </button>
-        <a onClick={() => setIsLogin(!isLogin)}>
+
+        <button onClick={() => setIsLogin(!isLogin)} className='login--link'>
           {isLogin ? 'Create an account' : 'Login Instead'}
-        </a>
+        </button>
       </form>
     </div>
   );

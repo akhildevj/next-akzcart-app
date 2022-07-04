@@ -6,8 +6,26 @@
 
   justify-self: center;
 
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .cart-bar--text {
+  font-weight: 800;
+}
+
+.cart-bar--minus-icon,
+.cart-bar--plus-icon {
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.cart-bar--minus-icon:hover {
+  transform: rotate(180deg) scale(1.2);
+  color: #f9484a;
+}
+
+.cart-bar--plus-icon:hover {
+  transform: rotate(180deg) scale(1.2);
+  color: #009617;
 }

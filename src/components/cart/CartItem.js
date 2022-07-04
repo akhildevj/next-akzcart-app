@@ -14,6 +14,7 @@ const CartItem = ({ cart }) => {
       <Image
         alt={cart.name}
         src={cart.imageUrl}
+        className='cart-item--image'
         width={75}
         height={75}
         quality={75}

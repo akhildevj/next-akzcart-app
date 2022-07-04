@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { useAuth } from '../../src/context/authContext';
 import Loader from '../../src/components/UI/Loader';
-import SingleOrderItem from '../../src/components/order/SingleOrderItem';
+import OrderDetails from '../../src/components/order/OrderDetails';
 
 const SingleOrderPage = ({ id }) => {
   const { loading, authUser } = useAuth();
@@ -18,11 +18,7 @@ const SingleOrderPage = ({ id }) => {
     if (data && data.order) setOrder(data.order);
   }, [data]);
 
-  return !loading && order ? (
-    <SingleOrderItem order={data.order} />
-  ) : (
-    <Loader />
-  );
+  return !loading && order ? <OrderDetails order={data.order} /> : <Loader />;
 };
 
 export const getServerSideProps = async context => {

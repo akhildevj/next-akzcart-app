@@ -5,8 +5,11 @@
   justify-items: flex-start;
   column-gap: 3.2rem;
   border-radius: 11px;
-  box-shadow: 0 1.6rem 2rem rgba(0, 0, 0, 0.03);
   overflow: hidden;
+}
+
+.cart-item--image {
+  border-radius: 60px;
 }
 
 .cart-item--name {
@@ -20,6 +23,7 @@
 }
 
 .cart-item--total {
+  justify-self: flex-end;
   font-size: 2.4rem;
   font-weight: 800;
 }

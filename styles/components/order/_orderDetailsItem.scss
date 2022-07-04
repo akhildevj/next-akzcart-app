@@ -1,0 +1,22 @@
+.order-details-item {
+  display: grid;
+  grid-template-columns: 5fr 15fr 10fr 5fr 10fr 15fr;
+  align-items: center;
+  justify-items: flex-start;
+  column-gap: 3.2rem;
+  overflow: hidden;
+  padding: 1.6rem 3.2rem;
+  font-size: 1.8rem;
+}
+
+.order-details-item--image {
+  border-radius: 60px;
+}
+
+.order-details-item--name {
+  font-weight: 600;
+}
+
+.order-details-item--total {
+  font-weight: 700;
+}

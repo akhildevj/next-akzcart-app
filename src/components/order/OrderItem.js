@@ -15,11 +15,17 @@ const OrderItem = ({ order }) => {
 
   return (
     <div className='order-item'>
+      <p className='order-item--number'>
+        Order Number <span>#{order.orderedAt}</span>
+      </p>
+
+      <p className='order-item--price'>₹{order.totalPrice}</p>
+
       <p className='order-item--date'>
         <FcCalendar />
-        Ordered At: {date}
+        {date}
       </p>
-      <p className='order-item--price'>Total Amount: ₹{order.totalPrice}</p>
+
       <div className='order-item--products'>
         {products.map(({ name, quantity }, index) => (
           <p key={index} className='order-item--products-card'>

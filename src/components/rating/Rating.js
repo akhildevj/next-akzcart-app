@@ -22,16 +22,17 @@ const RatingBar = props => {
   };
 
   return (
-    <div className="rating">
-      <Rating
-        name="half-rating"
-        value={rating}
-        precision={0.5}
-        onChange={(event, newValue) => {
-          changeRating(newValue);
-        }}
-      />
-    </div>
+    <Rating
+      name='half-rating'
+      value={rating}
+      precision={0.5}
+      sx={{
+        fontSize: '2.8rem',
+      }}
+      onChange={(event, newValue) => {
+        changeRating(newValue);
+      }}
+    />
   );
 };
 
