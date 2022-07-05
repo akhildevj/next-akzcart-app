@@ -2,9 +2,12 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../context/authContext';
 import NavItem from './NavItem';
+import { HiMenu } from 'react-icons/hi';
+import { IoMdClose } from 'react-icons/io';
 
 const NavBar = () => {
   const { authUser, loading, signOut } = useAuth();
+  const [clicked, setClicked] = useState(false);
 
   const router = useRouter();
   const [active, setActive] = useState('AkzKart');
@@ -47,8 +50,10 @@ const NavBar = () => {
     router.push('/');
   };
 
+  const toggle = () => setClicked(!clicked);
+
   return (
-    <div className='nav-bar'>
+    <header className={clicked ? 'nav-bar nav-open' : 'nav-bar'}>
       <div className='nav-bar--logo'>
         <NavItem
           name='AkzKart'
@@ -57,7 +62,8 @@ const NavBar = () => {
           setActive={setActive}
         />
       </div>
-      <div className='nav-bar--container'>
+
+      <nav className='nav-bar--container'>
         <NavItem
           name='Products'
           route='/products'
@@ -107,8 +113,13 @@ const NavBar = () => {
             setActive={setActive}
           />
         )}
-      </div>
-    </div>
+      </nav>
+
+      <button className='nav-bar--mobile' onClick={() => setClicked(!clicked)}>
+        <HiMenu className='nav-bar--mobile-menu' />
+        <IoMdClose className='nav-bar--mobile-close' />
+      </button>
+    </header>
   );
 };
 

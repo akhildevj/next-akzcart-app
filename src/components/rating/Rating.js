@@ -24,6 +24,7 @@ const RatingBar = props => {
   return (
     <Rating
       name='half-rating'
+      className='order-details-item--rating'
       value={rating}
       precision={0.5}
       sx={{

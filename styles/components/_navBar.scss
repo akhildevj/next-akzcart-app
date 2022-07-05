@@ -1,20 +1,19 @@
 .nav-bar {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: $size_6;
   font-weight: 600;
   position: sticky;
   top: 0;
   z-index: 1;
   background: white;
-  padding: 1rem 4rem;
+  padding: 1.2rem 2.4rem;
 }
 
 .nav-bar--logo {
   display: flex;
   align-items: center;
-  width: 30%;
 }
 
 .nav-bar--container {
@@ -22,7 +21,6 @@
   gap: 1.4rem;
   align-items: center;
   justify-content: flex-end;
-  width: 60%;
 }
 
 .nav-bar--container * {
@@ -62,4 +60,19 @@
 .nav-button:hover {
   color: #000;
   border-bottom: 1px solid currentColor;
+}
+
+.nav-bar--mobile {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: none;
+}
+
+.nav-bar--mobile-menu {
+  display: block;
+}
+
+.nav-bar--mobile-close {
+  display: none;
 }
