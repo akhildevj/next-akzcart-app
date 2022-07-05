@@ -60,6 +60,7 @@ const NavBar = () => {
           route='/'
           active={active}
           setActive={setActive}
+          toggle={toggle}
         />
       </div>
 
@@ -69,6 +70,7 @@ const NavBar = () => {
           route='/products'
           active={active}
           setActive={setActive}
+          toggle={toggle}
         />
 
         <NavItem
@@ -76,6 +78,7 @@ const NavBar = () => {
           route='/cart'
           active={active}
           setActive={setActive}
+          toggle={toggle}
         />
 
         {!loading && authUser ? (
@@ -85,6 +88,7 @@ const NavBar = () => {
               route='/products/new'
               active={active}
               setActive={setActive}
+              toggle={toggle}
             />
 
             <NavItem
@@ -92,6 +96,7 @@ const NavBar = () => {
               route='/products/admin'
               active={active}
               setActive={setActive}
+              toggle={toggle}
             />
 
             <NavItem
@@ -99,6 +104,7 @@ const NavBar = () => {
               route='/orders'
               active={active}
               setActive={setActive}
+              toggle={toggle}
             />
 
             <button className='nav-button' onClick={signOutHandler}>
@@ -111,11 +117,12 @@ const NavBar = () => {
             route='/login'
             active={active}
             setActive={setActive}
+            toggle={toggle}
           />
         )}
       </nav>
 
-      <button className='nav-bar--mobile' onClick={() => setClicked(!clicked)}>
+      <button className='nav-bar--mobile' onClick={toggle}>
         <HiMenu className='nav-bar--mobile-menu' />
         <IoMdClose className='nav-bar--mobile-close' />
       </button>
