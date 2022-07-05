@@ -4,6 +4,7 @@ import { Store } from 'react-notifications-component';
 import { useAuth } from '../../context/authContext';
 import { errorNotification, successNotification } from '../../shared/constants';
 import { FiLogIn } from 'react-icons/fi';
+import Image from 'next/image';
 
 const Login = () => {
   const router = useRouter();
@@ -67,6 +68,13 @@ const Login = () => {
   return (
     <div className='login'>
       <form onSubmit={submitHandler} className='login--form'>
+        <Image
+          alt='logo'
+          src='/logo.png'
+          width={180}
+          height={45}
+          quality={75}
+        />
         <p className='login--form-heading'>{isLogin ? 'Login' : 'Signup'}</p>
 
         {!isLogin && (

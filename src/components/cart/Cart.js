@@ -79,13 +79,19 @@ const Cart = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
+  const removeItem = id => setCart(cart.filter(item => item.id !== id));
+
   return cart ? (
     <div className='cart'>
       {cart.length ? (
         <div className='cart--container'>
           <h1 className='cart--container--heading'>Your Cart</h1>
           {cart.map(cartItem => (
-            <CartItem key={cartItem.id} cart={cartItem} />
+            <CartItem
+              key={cartItem.id}
+              cart={cartItem}
+              removeItem={removeItem}
+            />
           ))}
           <CartButton checkout={checkout} clearCart={clearCart} />
         </div>

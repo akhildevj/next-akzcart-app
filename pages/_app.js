@@ -4,15 +4,20 @@ import { ReactNotifications } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import '../styles/globals.css';
 import '../styles/styles.scss';
+import Head from 'next/head';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <div>
+    <>
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <title>AkzCart</title>
+      </Head>
       <AuthProvider>
         <ReactNotifications />
         <NavBar /> <Component {...pageProps} />
       </AuthProvider>
-    </div>
+    </>
   );
 };
 

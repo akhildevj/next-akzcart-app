@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import CartBar from './CartBar';
 
-const CartItem = ({ cart }) => {
+const CartItem = ({ cart, removeItem }) => {
   const [total, setTotal] = useState(cart.quantity * cart.price);
 
   const changeTotalPrice = quantity => {
@@ -24,9 +24,11 @@ const CartItem = ({ cart }) => {
 
       <CartBar
         cart={true}
+        cartId={cart.id}
         product={cart}
         quantity={cart.quantity}
         changeTotalPrice={changeTotalPrice}
+        removeItem={removeItem}
       />
       <p className='cart-item--total'>₹{total}</p>
     </div>

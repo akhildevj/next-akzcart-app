@@ -14,7 +14,7 @@ const CartBar = props => {
   };
 
   const decreaseHandler = () => {
-    if (quantity == 0) return;
+    if (quantity === 1) props.removeItem(props.cartId);
     setQuantity(quantity - 1);
     changeQuantity(quantity - 1);
   };

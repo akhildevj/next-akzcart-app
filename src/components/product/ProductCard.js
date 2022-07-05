@@ -31,7 +31,7 @@ const ProductCard = ({ product }) => {
       <div className='product-card--details'>
         <p className='product-card--name'>{product.name}</p>
         <p className='product-card--price'>₹{product.price}</p>
-        <ProductCardButton id={product.id} />
+        <ProductCardButton product={product} />
       </div>
     </div>
   );
