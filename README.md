@@ -1,6 +1,6 @@
 <p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nextjs-logo.svg/1200px-Nextjs-logo.svg.png" width="200"></p>
 
-# Akzkart E-Commerce App With Next.js
+# AkzCart E-Commerce App With Next.js
 
 ---
 

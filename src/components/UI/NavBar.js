@@ -4,16 +4,18 @@ import { useAuth } from '../../context/authContext';
 import NavItem from './NavItem';
 import { HiMenu } from 'react-icons/hi';
 import { IoMdClose } from 'react-icons/io';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const NavBar = () => {
   const { authUser, loading, signOut } = useAuth();
   const [clicked, setClicked] = useState(false);
 
   const router = useRouter();
-  const [active, setActive] = useState('AkzKart');
+  const [active, setActive] = useState('AkzCart');
 
   useEffect(() => {
-    if (router.pathname === '/') setActive('AkzKart');
+    if (router.pathname === '/') setActive('AkzCart');
     if (router.pathname === '/login') {
       if (!loading) {
         if (authUser) router.push('/');
@@ -55,13 +57,16 @@ const NavBar = () => {
   return (
     <header className={clicked ? 'nav-bar nav-open' : 'nav-bar'}>
       <div className='nav-bar--logo'>
-        <NavItem
-          name='AkzKart'
-          route='/'
-          active={active}
-          setActive={setActive}
-          toggle={toggle}
-        />
+        <Link href='/' passHref={true}>
+          <Image
+            alt='logo'
+            src='/logo.png'
+            className='nav-bar--logo-image'
+            width={120}
+            height={30}
+            quality={75}
+          />
+        </Link>
       </div>
 
       <nav className='nav-bar--container'>

@@ -1,3 +1,38 @@
-.home-image {
+.home--image {
   width: 100%;
+  position: relative;
+}
+
+.home--header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+.home--header-title {
+  font-size: 5.2rem;
+  letter-spacing: 8px;
+  color: #fff;
+  text-shadow: 1px 1px rgb(0, 70, 199);
+  border-bottom: 1px solid #fff;
+}
+
+.home--header-button {
+  cursor: pointer;
+  color: #fff;
+  font-size: 2.2rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+}
+
+.home--header-button:hover svg {
+  transform: translateX(2.5em) scale(1.8);
 }
